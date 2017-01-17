@@ -14,6 +14,23 @@ CBank::CBank(TypeSyncPrimitives type)
 	m_totalBalance = 0;
 }
 
+size_t CBank::GetClientsCount() const
+{
+	return m_clients.size();
+}
+
+HANDLE * CBank::GetClientsHandles() const
+{
+	std::vector<HANDLE> handles;
+
+	for (auto const& client : m_clients)
+	{
+		handles.push_back(client.m_handle);
+	}
+
+	return handles.data();
+}
+
 CBankClient* CBank::CreateClient()
 {
 	unsigned clientId = unsigned(m_clients.size());
