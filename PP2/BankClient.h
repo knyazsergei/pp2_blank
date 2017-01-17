@@ -1,5 +1,6 @@
 #pragma once
 #include <Windows.h>
+#include "SyncPrimitives.h"
 
 class CBank;
 
@@ -12,7 +13,10 @@ private:
 	CBankClient(CBank *bank, unsigned id);
 	static unsigned GetSleepDuration(CBankClient *client);
 	static unsigned GetBalanceChangeValue();
-	static DWORD WINAPI ThreadFunction(LPVOID lpParam);
+	static DWORD WINAPI ThreadFunction(LPVOID lpParam);	
+
+	HANDLE m_handle;
+	SyncPrimitives *m_syncPrimitives = nullptr;
 
 	friend CBank;
 
