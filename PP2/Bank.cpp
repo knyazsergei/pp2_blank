@@ -6,6 +6,13 @@ CBank::CBank()
 	m_totalBalance = 0;
 }
 
+CBank::CBank(TypeSyncPrimitives type)
+{
+	m_syncPrimitives = new SyncPrimitives();
+	m_syncPrimitives->type = type;
+	m_clients = std::vector<CBankClient>();
+	m_totalBalance = 0;
+}
 
 CBankClient* CBank::CreateClient()
 {

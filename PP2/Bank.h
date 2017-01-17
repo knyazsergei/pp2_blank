@@ -3,17 +3,20 @@
 #include <vector>
 
 #include "BankClient.h"
+#include "SyncPrimitives.h"
 
 class CBank
 {
 public:
 	CBank();
+	CBank(TypeSyncPrimitives type);
 	CBankClient* CreateClient();
 	void UpdateClientBalance(CBankClient& client, int value);
 
 private:
 	std::vector<CBankClient> m_clients;
 	int m_totalBalance;
+	SyncPrimitives *m_syncPrimitives = nullptr;
 
 	int GetTotalBalance();
 	void SetTotalBalance(int value);
